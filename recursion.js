@@ -20,7 +20,13 @@ function longest(words, longestW = [ 0 ], i = 0) {
 
 /** everyOther: return a string with every other letter. */
 
-function everyOther(str) {}
+function everyOther(str, chopped = [], i = 0) {
+	if (i === str.length) return chopped.join('');
+	if (i % 2 === 0) {
+		chopped.push(str[i]);
+	}
+	return everyOther(str, chopped, i + 1);
+}
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
