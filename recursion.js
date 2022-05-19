@@ -48,7 +48,11 @@ function findIndex(arr, val) {}
 
 /** revString: return a copy of a string, but in reverse. */
 
-function revString(str) {}
+function revString(str, reverse = [], i = str.length - 1) {
+	if (i < 0) return reverse.join('');
+	reverse.push(str[i]);
+	return revString(str, reverse, i - 1);
+}
 
 /** gatherStrings: given an object, return an array of all of the string values. */
 
