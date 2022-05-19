@@ -8,7 +8,15 @@ function product(nums, i = 0) {
 
 /** longest: return the length of the longest word in an array of words. */
 
-function longest(words) {}
+function longest(words, longestW = [ 0 ], i = 0) {
+	if (i === words.length) return longestW[0];
+
+	if (words[i].length > longestW[0]) {
+		longestW.pop();
+		longestW.push(words[i].length);
+	}
+	return longest(words, longestW, i + 1);
+}
 
 /** everyOther: return a string with every other letter. */
 
@@ -35,7 +43,6 @@ function gatherStrings(obj) {}
 
 function binarySearch(arr, val) {}
 
-console.log(product([ 2, 3, 4 ]));
 module.exports = {
 	product,
 	longest,
