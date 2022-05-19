@@ -60,7 +60,17 @@ function revString(str, reverse = [], i = str.length - 1) {
 
 /** gatherStrings: given an object, return an array of all of the string values. */
 
-function gatherStrings(obj) {}
+function gatherStrings(obj, strings = [], i = 0) {
+	for (let key in obj) {
+		if (typeof obj[key] === 'object') {
+			strings.push(...gatherStrings(obj[key]));
+		}
+		if (typeof obj[key] === 'string') {
+			strings.push(obj[key]);
+		}
+	}
+	return strings;
+}
 
 /** binarySearch: given a sorted array of numbers, and a value,
  * return the index of that value (or -1 if val is not present). */
