@@ -30,7 +30,17 @@ function everyOther(str, chopped = [], i = 0) {
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
-function isPalindrome(str) {}
+function isPalindrome(str, reverse = [], i = str.length - 1) {
+	if (i < 0) {
+		if (reverse.join('') === str) {
+			return true;
+		}
+		return false;
+	}
+
+	reverse.push(str[i]);
+	return isPalindrome(str, reverse, i - 1);
+}
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
 
